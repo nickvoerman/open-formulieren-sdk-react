@@ -5,26 +5,27 @@ function App() {
 
   const options = {
     formId: process.env.REACT_APP_FORM_ID,
-    baseUrl: process.env.REACT_APP_BASE_URL
+    baseUrl: process.env.REACT_APP_BASE_URL,
+    basePath: "/",
   }
 
   const element = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     if (element.current) {
-      //@ts-ignore
+      // @ts-ignore
       const form = new OpenForms.OpenForm(element.current, options);
       form.init();
     }
-
-  }, [element]);
+  }, [])
 
   return (
     <div className="App">
       <h1>Open Formulieren create react app</h1>
 
-      <div ref={element} />
+      <p>hello</p>
+
+      <div ref={element}>Loading form...</div>
     </div>
   );
 }
