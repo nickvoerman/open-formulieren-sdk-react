@@ -1,31 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Form from './pages/form';
 
 function App() {
-
-  const options = {
-    formId: process.env.REACT_APP_FORM_ID,
-    baseUrl: process.env.REACT_APP_BASE_URL,
-    basePath: "/",
-  }
-
-  const element = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (element.current) {
-      // @ts-ignore
-      const form = new OpenForms.OpenForm(element.current, options);
-      form.init();
-    }
-  }, [])
 
   return (
     <div className="App">
       <h1>Open Formulieren create react app</h1>
 
-      <p>hello</p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/sup/hello" element={<Form />} />
+        </Routes>
+      </BrowserRouter>
 
-      <div ref={element}>Loading form...</div>
     </div>
   );
 }
